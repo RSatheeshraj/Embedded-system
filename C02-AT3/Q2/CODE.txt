@@ -1,0 +1,57 @@
+#include <stdio.h>
+
+int adcValue;
+
+// UART Initialization
+void UART_Init()
+{
+    printf("UART Initialized\n");
+}
+
+// ADC Initialization
+void ADC_Init()
+{
+    printf("ADC Initialized\n");
+}
+
+// GPIO Initialization
+void GPIO_Init()
+{
+    printf("GPIO Initialized\n");
+}
+
+// Read ADC Value
+int ADC_Read()
+{
+    return 650;      // Sample ADC value
+}
+
+// LED ON
+void LED_ON()
+{
+    printf("LED ON\n");
+}
+
+// LED OFF
+void LED_OFF()
+{
+    printf("LED OFF\n");
+}
+
+int main()
+{
+    UART_Init();
+    ADC_Init();
+    GPIO_Init();
+
+    adcValue = ADC_Read();
+
+    printf("ADC Value = %d\n", adcValue);
+
+    if(adcValue > 500)
+        LED_ON();
+    else
+        LED_OFF();
+
+    return 0;
+}
