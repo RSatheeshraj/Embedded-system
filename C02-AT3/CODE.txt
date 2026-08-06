@@ -1,0 +1,56 @@
+#include <stdio.h>
+
+#define SIZE 5
+
+int buffer[SIZE];
+int head = 0;
+int tail = 0;
+int count = 0;
+
+// Insert data
+void enqueue(int data)
+{
+    if(count == SIZE)
+    {
+        printf("Buffer Full\n");
+        return;
+    }
+
+    buffer[head] = data;
+    head = (head + 1) % SIZE;
+    count++;
+}
+
+// Remove data
+int dequeue()
+{
+    if(count == 0)
+    {
+        printf("Buffer Empty\n");
+        return -1;
+    }
+
+    int data = buffer[tail];
+    tail = (tail + 1) % SIZE;
+    count--;
+
+    return data;
+}
+
+int main()
+{
+    enqueue(10);
+    enqueue(20);
+    enqueue(30);
+    enqueue(40);
+    enqueue(50);
+
+    printf("Data Stream:\n");
+
+    while(count > 0)
+    {
+        printf("%d\n", dequeue());
+    }
+
+    return 0;
+}
